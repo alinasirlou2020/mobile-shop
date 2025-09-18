@@ -2,7 +2,7 @@
 pragma solidity ^0.8.20;
 
 /// @title MobileShop - a simple marketplace for phones (optimized & reentrancy-safe)
-/// @author Ivan (you can replace with your name)
+/// @author Ali Nasirlou
 /// @notice This contract demonstrates a minimal marketplace: add product, buy product
 /// @dev Uses OpenZeppelin ReentrancyGuard, calldata for gas savings, storage pointers and call() for transfers
 
