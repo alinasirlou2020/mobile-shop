@@ -25,21 +25,8 @@ contract MobileShop is ReentrancyGuard {
     mapping(uint256 => Product) public products;
 
     // Events with indexed fields for easy off-chain filtering
-    event ProductCreated(
-        uint256 indexed id,
-        string name,
-        uint256 price,
-        address indexed owner,
-        bool sold
-    );
-
-    event ProductSold(
-        uint256 indexed id,
-        string name,
-        uint256 price,
-        address indexed newOwner,
-        bool sold
-    );
+    event ProductCreated(uint256 indexed id, string name, uint256 price, address indexed owner, bool sold);
+    event ProductSold(uint256 indexed id, string name, uint256 price, address indexed newOwner, bool sold);
 
     /// @notice Add a new product to the marketplace
     /// @dev Uses calldata for the string to save gas. Not payable (no ETH needed to list).
@@ -51,13 +38,7 @@ contract MobileShop is ReentrancyGuard {
 
         // increment ID and store product
         counter += 1;
-        products[counter] = Product({
-            id: counter,
-            name: _name,
-            price: _price,
-            owner: msg.sender,
-            sold: false
-        });
+        products[counter] = Product({id: counter, name: _name, price: _price, owner: msg.sender, sold: false});
 
         emit ProductCreated(counter, _name, _price, msg.sender, false);
     }
@@ -117,3 +98,4 @@ contract MobileShop is ReentrancyGuard {
         return (p.id, p.name, p.price, p.owner, p.sold);
     }
 }
+
